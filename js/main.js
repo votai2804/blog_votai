@@ -138,3 +138,19 @@ if ('IntersectionObserver' in window) {
 }
 
 console.log('Portfolio website loaded successfully!');
+
+// ========== TOGGLE HIDDEN PROJECTS ==========
+function toggleProjects() {
+    const hiddenProjects = document.getElementById('hiddenProjects');
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    
+    hiddenProjects.classList.toggle('show');
+    
+    if (hiddenProjects.classList.contains('show')) {
+        viewAllBtn.textContent = 'Ẩn Các Dự Án Khác';
+        viewAllBtn.classList.add('active');
+    } else {
+        viewAllBtn.textContent = 'Xem Tất Cả Dự Án';
+        viewAllBtn.classList.remove('active');
+    }
+}

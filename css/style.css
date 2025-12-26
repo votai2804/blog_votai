@@ -545,6 +545,19 @@ body {
     color: #000;
 }
 
+.hidden-projects {
+    display: none;
+}
+
+.hidden-projects.show {
+    display: contents;
+}
+
+.projects-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
 /* --- FEATURED BLOG POSTS SECTION --- */
 .blog-featured-section {
     padding: 100px 0;
