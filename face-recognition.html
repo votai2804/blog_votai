@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System - Võ Tấn Tài</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER / NAVIGATION -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <section class="project-detail-section" style="margin-top: 80px;">
+        <div class="container">
+            <!-- Back Button -->
+            <a href="projects.html" class="btn btn-outline" style="margin-bottom: 30px;">
+                <i class="fas fa-arrow-left"></i> Quay lại
+            </a>
+
+            <!-- Project Header -->
+            <div class="project-detail-header">
+                <h1>Face Recognition Attendance System</h1>
+                <p class="project-detail-role">Developer</p>
+                <p class="project-detail-date">Jul 2023</p>
+            </div>
+
+            <!-- Project Image -->
+            <div class="project-detail-image">
+                <img src="images/duan/Face Recognition Attendance System.png" alt="Face Recognition Attendance System">
+            </div>
+
+            <!-- Project Overview -->
+            <div class="project-detail-content">
+                <h2>Tổng Quan Dự Án</h2>
+                <p>
+                    Hệ thống chấm công bằng nhận diện gương mặt, viết bằng Python. Thu nhận và mã hóa khuôn mặt, 
+                    so khớp và lưu nhật ký chấm công vào SQL Server; có giao diện quản trị đơn giản để duyệt lịch sử.
+                </p>
+            </div>
+
+            <!-- Overview Section -->
+            <div class="project-detail-section-block">
+                <h2><i class="fas fa-info-circle"></i> Mô Tả Chi Tiết</h2>
+                <p>
+                    Hệ thống chấm công tự động sử dụng công nghệ nhận diện gương mặt để thay thế phương pháp chấm công 
+                    truyền thống. Ứng dụng có khả năng:
+                </p>
+                <ul class="detail-list">
+                    <li>Thu nhận hình ảnh khuôn mặt từ webcam</li>
+                    <li>Mã hóa và lưu trữ dữ liệu khuôn mặt an toàn</li>
+                    <li>So khớp khuôn mặt real-time với cơ sở dữ liệu</li>
+                    <li>Ghi nhận thời gian chấm công tự động</li>
+                    <li>Quản trị lịch sử chấm công qua giao diện web</li>
+                </ul>
+            </div>
+
+            <!-- Technologies Section -->
+            <div class="project-detail-section-block">
+                <h2><i class="fas fa-code"></i> Công Nghệ</h2>
+                <div class="tech-badges">
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">face-recognition</span>
+                    <span class="tech-badge">SQL Server</span>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="project-detail-section-block">
+                <h2><i class="fas fa-star"></i> Tính Năng Chính</h2>
+                <ul class="detail-list">
+                    <li><strong>Nhận Diện Gương Mặt:</strong> Sử dụng OpenCV và face-recognition library</li>
+                    <li><strong>Mã Hóa Khuôn Mặt:</strong> Chuyển đổi khuôn mặt thành vector 128-chiều</li>
+                    <li><strong>So Khớp Thời Gian Thực:</strong> Nhận diện người dùng trong vòng <100ms</li>
+                    <li><strong>Ghi Nhật Ký:</strong> Lưu thời gian, người dùng, mức độ chính xác vào SQL Server</li>
+                    <li><strong>Giao Diện Quản Trị:</strong> Duyệt lịch sử, thống kê tham dự, export báo cáo</li>
+                    <li><strong>Đăng Ký Khuôn Mặt:</strong> Thêm người dùng mới, cập nhật dữ liệu khuôn mặt</li>
+                </ul>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="project-detail-section-block">
+                <h2><i class="fas fa-cog"></i> Chi Tiết Kỹ Thuật</h2>
+                <h4>Quy Trình Hoạt Động:</h4>
+                <ol class="detail-list">
+                    <li>Cấp phát webcam và thu nhận frame video</li>
+                    <li>Phát hiện khuôn mặt bằng OpenCV (Haar Cascade hoặc SSD)</li>
+                    <li>Trích xuất embedding vector 128-chiều từ khuôn mặt</li>
+                    <li>So khớp với embedding trong cơ sở dữ liệu (Euclidean distance)</li>
+                    <li>Nếu match (distance < threshold), ghi nhân và lưu nhật ký</li>
+                    <li>Cập nhật giao diện quản trị cho người dùng</li>
+                </ol>
+
+                <h4>Bảo Mật Dữ Liệu:</h4>
+                <ul class="detail-list">
+                    <li>Không lưu trữ ảnh gốc, chỉ lưu embedding vector</li>
+                    <li>Mã hóa dữ liệu nhạy cảm trong SQL Server</li>
+                    <li>Xác thực người dùng trước khi truy cập quản trị</li>
+                    <li>Ghi log mọi thao tác trên hệ thống</li>
+                </ul>
+            </div>
+
+            <!-- Results Section -->
+            <div class="project-detail-section-block">
+                <h2><i class="fas fa-chart-line"></i> Kết Quả & Hiệu Năng</h2>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <h4>Độ Chính Xác Cao</h4>
+                        <p>Nhận diện chính xác trong các điều kiện ánh sáng khác nhau</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>Tốc Độ Nhanh</h4>
+                        <p>Xử lý frame <100ms, thích hợp cho lớp học</p>
+                    </div>
+                    <div class="result-item">
+                        <h4>Dễ Sử Dụng</h4>
+                        <p>Giao diện đơn giản, nhân viên dễ thao tác</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Projects Button -->
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="projects.html" class="btn btn-primary">Xem Dự Án Khác</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Tôi</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Về Tôi</a></li>
+                        <li><a href="skills.html">Kỹ Năng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Dự Án & Blog</h4>
+                    <ul>
+                        <li><a href="projects.html">Dự Án</a></li>
+                        <li><a href="certifications.html">Chứng Chỉ</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Hệ</h4>
+                    <ul>
+                        <li><a href="contact.html">Liên Hệ</a></li>
+                        <li><a href="https://github.com/votai2804" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Võ Tấn Tài - Software Engineer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
