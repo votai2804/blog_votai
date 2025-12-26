@@ -1,0 +1,213 @@
+/* --- CÀI ĐẶT CƠ BẢN --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden; /* Tránh thanh cuộn ngang */
+}
+
+/* --- HERO CONTAINER (LAYOUT CHIA ĐÔI) --- */
+.hero-container {
+    display: flex;
+    height: 100vh; /* Chiều cao full màn hình */
+    width: 100%;
+}
+
+/* --- CỘT TRÁI (TEXT - NỀN TRẮNG) --- */
+.hero-left {
+    flex: 1; /* Chiếm 50% */
+    background-color: #ffffff;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8%; /* Căn lề trái phải */
+    position: relative;
+}
+
+/* Navbar đơn giản */
+.navbar {
+    position: absolute;
+    top: 30px;
+    left: 8%;
+}
+
+.logo {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000;
+    letter-spacing: -1px;
+}
+
+/* Nội dung chính */
+.hero-content {
+    max-width: 600px;
+    /* Animation xuất hiện từ dưới lên */
+    animation: fadeUp 1s ease-out forwards;
+    opacity: 0; /* Ẩn ban đầu để chạy animation */
+    transform: translateY(30px);
+}
+
+.greeting {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.role {
+    font-size: 1.5rem;
+    color: #2563eb; /* Màu xanh điểm nhấn */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* Nút bấm (Buttons) */
+.cta-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Nút chính (Nền đen, chữ trắng) */
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Nút phụ (Viền đen, nền trắng) */
+.btn-outline {
+    background-color: transparent;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.btn-outline:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Link text đơn giản */
+.btn-text {
+    color: #000;
+    font-weight: 600;
+}
+
+.btn-text:hover {
+    text-decoration: underline;
+}
+
+/* --- CỘT PHẢI (HÌNH ẢNH - NỀN ĐEN) --- */
+.hero-right {
+    flex: 1; /* Chiếm 50% */
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-wrapper {
+    width: 80%;
+    height: 80%;
+    /* Animation xuất hiện từ bên phải */
+    animation: fadeInRight 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 10px;
+    filter: grayscale(20%); /* Làm ảnh hơi xám cho nghệ thuật */
+    transition: filter 0.3s;
+}
+
+.hero-img:hover {
+    filter: grayscale(0%); /* Hiển thị màu gốc khi di chuột */
+}
+
+/* --- ANIMATIONS (KEYFRAMES) --- */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- RESPONSIVE (MOBILE / TABLET) --- */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column; /* Xếp chồng dọc trên mobile */
+        height: auto;
+    }
+
+    .hero-left {
+        padding: 60px 20px;
+        order: 2; /* Đưa text xuống dưới ảnh trên mobile (tuỳ chọn) */
+    }
+
+    .hero-right {
+        height: 50vh; /* Chiều cao ảnh trên mobile */
+        order: 1;
+    }
+    
+    .name {
+        font-size: 2.5rem;
+    }
+    
+    .cta-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
