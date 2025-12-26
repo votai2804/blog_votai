@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Server 2022 - Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .blog-post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .blog-post-content {
+            max-width: 800px;
+            margin: 60px auto;
+            line-height: 1.8;
+            color: #333;
+        }
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            color: #000;
+        }
+        .blog-post-content h3 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            color: #1e40af;
+        }
+        .blog-post-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .author-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px 0;
+            display: flex;
+            gap: 15px;
+        }
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .author-info h4 {
+            margin: 0 0 5px 0;
+        }
+        .author-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: #1e40af;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background-color: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>SQL Server 2022: Thiết Kế Database Tối Ưu Cho Hiệu Suất</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 15 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> SQL Server</span>
+                <span><i class="fas fa-clock"></i> 20 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>SQL Server 2022 Là Gì?</h2>
+            <p>SQL Server 2022 là phiên bản mới nhất của hệ quản trị cơ sở dữ liệu mạnh mẽ của Microsoft. Nó cung cấp các tính năng hiện đại cho quản lý dữ liệu lớn, an ninh cao, và hiệu suất tối ưu.</p>
+
+            <h2>Thiết Kế Schema Tối Ưu</h2>
+            <p>Thiết kế schema tốt là nền tảng của một database hiệu quả:</p>
+            <ul>
+                <li><strong>Normalization:</strong> Giảm lặp lại dữ liệu thông qua các normal forms</li>
+                <li><strong>Primary Keys:</strong> Xác định duy nhất mỗi record</li>
+                <li><strong>Foreign Keys:</strong> Đảm bảo tính toàn vẹn dữ liệu</li>
+                <li><strong>Data Types:</strong> Chọn kiểu dữ liệu phù hợp</li>
+                <li><strong>Constraints:</strong> CHECK, UNIQUE, NOT NULL</li>
+            </ul>
+
+            <h2>Indexing Strategy</h2>
+            <p>Indexes là chìa khóa để tối ưu hiệu suất queries:</p>
+            <div class="code-block">
+<code>-- Tạo clustered index
+CREATE CLUSTERED INDEX IX_Student_Id 
+ON Students(StudentId);
+
+-- Tạo non-clustered index
+CREATE NONCLUSTERED INDEX IX_Student_Email 
+ON Students(Email);
+
+-- Index composite
+CREATE NONCLUSTERED INDEX IX_Student_Name_Email 
+ON Students(FirstName, LastName, Email);</code>
+            </div>
+
+            <h2>Query Optimization</h2>
+            <p>Tối ưu queries để giảm thời gian thực thi:</p>
+            <div class="code-block">
+<code>-- ❌ Tránh
+SELECT * FROM Orders WHERE YEAR(OrderDate) = 2024;
+
+-- ✓ Tốt hơn
+SELECT * FROM Orders 
+WHERE OrderDate >= '2024-01-01' 
+AND OrderDate < '2025-01-01';</code>
+            </div>
+
+            <h2>Stored Procedures</h2>
+            <p>Stored Procedures giúp tăng hiệu suất và tính bảo mật:</p>
+            <div class="code-block">
+<code>CREATE PROCEDURE sp_GetStudentsByGrade
+    @Grade INT
+AS
+BEGIN
+    SELECT Id, Name, Email, GPA
+    FROM Students
+    WHERE Grade = @Grade
+    ORDER BY GPA DESC;
+END;</code>
+            </div>
+
+            <h2>Views</h2>
+            <p>Views giúp đơn giản hóa queries phức tạp:</p>
+            <div class="code-block">
+<code>CREATE VIEW vw_StudentEnrollments AS
+SELECT 
+    s.Name, 
+    COUNT(e.Id) as EnrollmentCount,
+    AVG(e.Grade) as AverageGrade
+FROM Students s
+LEFT JOIN Enrollments e ON s.Id = e.StudentId
+GROUP BY s.Id, s.Name;</code>
+            </div>
+
+            <h2>Transactions</h2>
+            <p>Đảm bảo tính ACID trong các operations:</p>
+            <div class="code-block">
+<code>BEGIN TRANSACTION;
+
+BEGIN TRY
+    UPDATE Accounts SET Balance = Balance - 100 WHERE Id = 1;
+    UPDATE Accounts SET Balance = Balance + 100 WHERE Id = 2;
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+    PRINT 'Transaction failed';
+END CATCH;</code>
+            </div>
+
+            <h2>Performance Tuning</h2>
+            <ul>
+                <li>Sử dụng SQL Server Management Studio để xem execution plans</li>
+                <li>Identify missing indexes từ DMVs</li>
+                <li>Monitor query performance với Extended Events</li>
+                <li>Partition large tables</li>
+                <li>Sử dụng appropriate fillfactor</li>
+            </ul>
+
+            <h2>Backup & Recovery</h2>
+            <p>Backup là cực kỳ quan trọng:</p>
+            <div class="code-block">
+<code>-- Full backup
+BACKUP DATABASE MyDatabase
+TO DISK = 'C:\Backups\MyDatabase.bak';
+
+-- Restore database
+RESTORE DATABASE MyDatabase
+FROM DISK = 'C:\Backups\MyDatabase.bak';</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Luôn normalize database schemas</li>
+                <li>Monitor indexes regularly - loại bỏ unused indexes</li>
+                <li>Sử dụng appropriate join types</li>
+                <li>Avoid SELECT * queries</li>
+                <li>Implement proper error handling</li>
+                <li>Document database structure</li>
+                <li>Regular maintenance tasks</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>SQL Server 2022 là một công cụ mạnh mẽ. Bằng cách hiểu và áp dụng các nguyên tắc thiết kế tốt, bạn có thể tạo ra databases hiệu quả, an toàn và dễ bảo trì.</p>
+
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in Database Design and SQL Server</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức và kinh nghiệm về Software Engineering.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Về Tôi</a></li>
+                        <li><a href="projects.html">Dự Án</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

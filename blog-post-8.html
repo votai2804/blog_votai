@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Flow & Version Control - Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: #fff; padding: 80px 0; text-align: center; margin-top: 60px; }
+        .blog-post-header h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        .blog-post-meta { display: flex; justify-content: center; gap: 20px; font-size: 0.95rem; margin-bottom: 20px; }
+        .blog-post-content { max-width: 800px; margin: 60px auto; line-height: 1.8; color: #333; }
+        .blog-post-content h2 { font-size: 1.8rem; margin: 40px 0 20px 0; color: #000; }
+        .blog-post-content h3 { font-size: 1.3rem; margin: 30px 0 15px 0; color: #1e40af; }
+        .blog-post-content p { margin-bottom: 15px; text-align: justify; }
+        .blog-post-content ul { margin-bottom: 20px; margin-left: 20px; }
+        .blog-post-content li { margin-bottom: 10px; }
+        .code-block { background: #f5f5f5; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; overflow-x: auto; border-radius: 5px; }
+        .code-block code { font-family: 'Courier New', monospace; font-size: 0.9rem; color: #333; }
+        .author-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 40px 0; display: flex; gap: 15px; }
+        .author-avatar { width: 70px; height: 70px; border-radius: 50%; background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
+        .author-info h4 { margin: 0 0 5px 0; }
+        .author-info p { margin: 0; color: #666; font-size: 0.9rem; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: #1e40af; }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>Git Flow & Version Control: Quản Lý Mã Nguồn Chuyên Nghiệp</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 02 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> DevOps</span>
+                <span><i class="fas fa-clock"></i> 17 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>Git Là Gì?</h2>
+            <p>Git là distributed version control system phổ biến nhất. Nó giúp quản lý source code changes, collaborate với team, và track project history.</p>
+
+            <h2>Cơ Bản Git</h2>
+            <div class="code-block">
+<code">// Khởi tạo repository
+git init
+
+// Clone repository
+git clone https://github.com/user/repo.git
+
+// Check status
+git status
+
+// Add files to staging area
+git add .
+git add filename.txt
+
+// Commit changes
+git commit -m "Add new feature"
+
+// Push to remote
+git push origin main
+
+// Pull từ remote
+git pull origin main</code>
+            </div>
+
+            <h2>Git Flow Workflow</h2>
+            <p>Git Flow là branching model giúp organize development process:</p>
+            <div class="code-block">
+<code">// Main branches:
+- main (production-ready code)
+- develop (integration branch)
+
+// Support branches:
+- feature/* (new features)
+- release/* (release preparation)
+- hotfix/* (production bugs)</code>
+            </div>
+
+            <h2>Feature Development</h2>
+            <div class="code-block">
+<code">// Tạo feature branch từ develop
+git checkout -b feature/user-authentication develop
+
+// Làm việc trên feature
+git add .
+git commit -m "Implement user login"
+git push origin feature/user-authentication
+
+// Tạo Pull Request trên GitHub
+// Review và merge vào develop
+
+// Xóa feature branch
+git branch -d feature/user-authentication</code>
+            </div>
+
+            <h2>Release Management</h2>
+            <div class="code-block">
+<code">// Tạo release branch
+git checkout -b release/1.0.0 develop
+
+// Bug fixes trong release
+git commit -m "Fix bugs for v1.0.0"
+
+// Merge vào main
+git checkout main
+git merge --no-ff release/1.0.0
+git tag -a v1.0.0 -m "Version 1.0.0"
+
+// Merge back vào develop
+git checkout develop
+git merge --no-ff release/1.0.0
+
+// Xóa release branch
+git branch -d release/1.0.0</code>
+            </div>
+
+            <h2>Hotfix Management</h2>
+            <p>Khi cần fix bug trong production:</p>
+            <div class="code-block">
+<code">// Tạo hotfix branch từ main
+git checkout -b hotfix/critical-bug main
+
+// Fix bug
+git commit -m "Fix critical bug"
+
+// Merge vào main
+git checkout main
+git merge --no-ff hotfix/critical-bug
+git tag -a v1.0.1 -m "Version 1.0.1"
+
+// Merge vào develop
+git checkout develop
+git merge --no-ff hotfix/critical-bug
+
+// Xóa hotfix branch
+git branch -d hotfix/critical-bug</code>
+            </div>
+
+            <h2>Commit Conventions</h2>
+            <p>Sử dụng conventional commits để code history sạch sẽ:</p>
+            <div class="code-block">
+<code">feat: Thêm feature mới
+fix: Sửa bug
+docs: Thay đổi documentation
+style: Code formatting
+refactor: Refactor code
+perf: Performance improvement
+test: Thêm tests
+chore: Build hoặc dependency updates
+
+Ví dụ:
+git commit -m "feat: Add user authentication"
+git commit -m "fix: Fix login timeout issue"</code>
+            </div>
+
+            <h2>Merge Conflicts</h2>
+            <p>Giải quyết conflicts khi merge:</p>
+            <div class="code-block">
+<code">// Khi có conflict
+git merge feature/branch
+// CONFLICT markers sẽ appear
+
+// Resolve conflicts manually rồi
+git add resolved-file.txt
+git commit -m "Resolve merge conflicts"
+git push origin main</code>
+            </div>
+
+            <h2>Rebase vs Merge</h2>
+            <h3>Merge</h3>
+            <p>Tạo merge commit, giữ nguyên history:</p>
+            <div class="code-block">
+<code">git merge feature/branch</code>
+            </div>
+
+            <h3>Rebase</h3>
+            <p>Reapply commits, history sạch hơn:</p>
+            <div class="code-block">
+<code">git rebase main
+git rebase -i HEAD~3  // Interactive rebase</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Viết meaningful commit messages</li>
+                <li>Commit thường xuyên, không commit quá lớn</li>
+                <li>Pull before push để avoid conflicts</li>
+                <li>Sử dụng branches cho mỗi feature</li>
+                <li>Code review qua Pull Requests</li>
+                <li>Keep main branch stable</li>
+                <li>Tag versions cho releases</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>Git Flow là best practice workflow cho professional software development. Master Git Flow sẽ giúp team organize code, collaborate hiệu quả, và maintain quality.</p>
+
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in DevOps and Code Management</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức về Software Engineering.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="about.html">Về Tôi</a></li>
+                        <li><a href="projects.html">Dự Án</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
