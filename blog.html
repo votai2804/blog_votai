@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Võ Tấn Tài - Java & JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 100px 0 50px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .blog-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-header p {
+            font-size: 1.1rem;
+            color: #aaa;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .blog-category {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .blog-date {
+            color: #666;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .blog-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .read-more {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #1e40af;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVIGATION -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="index.html#about" class="nav-link">Về tôi</a></li>
+                <li><a href="index.html#skills" class="nav-link">Kỹ năng</a></li>
+                <li><a href="index.html#projects" class="nav-link">Dự án</a></li>
+                <li><a href="index.html#certifications" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BLOG HEADER -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>Blog Của Tôi</h1>
+            <p>Chia sẻ kiến thức về Java, JavaScript và lập trình web</p>
+        </div>
+    </section>
+
+    <!-- BLOG POSTS -->
+    <section style="padding: 100px 0;">
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Java</span>
+                            <span class="blog-date">15 Dec 2024</span>
+                        </div>
+                        <h3>Java OOP: Hướng Dẫn Hoàn Toàn Về Lập Trình Hướng Đối Tượng</h3>
+                        <p>Tìm hiểu chi tiết về các khái niệm cốt lõi của OOP trong Java: class, object, inheritance, polymorphism và abstraction. Bài viết này sẽ giúp bạn nắm vững nền tảng để viết code Java hiệu quả.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">JavaScript</span>
+                            <span class="blog-date">12 Dec 2024</span>
+                        </div>
+                        <h3>Async/Await trong JavaScript: Xử Lý Bất Đồng Bộ Như Một Pro</h3>
+                        <p>Hướng dẫn chi tiết về Async/Await - cách hiện đại nhất để xử lý các tác vụ bất đồng bộ trong JavaScript. Học cách viết code sạch, dễ đọc và xử lý lỗi hiệu quả.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Java</span>
+                            <span class="blog-date">10 Dec 2024</span>
+                        </div>
+                        <h3>Exception Handling trong Java: Xử Lý Ngoại Lệ Một Cách Chuyên Nghiệp</h3>
+                        <p>Tìm hiểu cách sử dụng try-catch-finally, custom exceptions và best practices để xử lý lỗi trong Java. Viết code an toàn và dễ bảo trì hơn.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">JavaScript</span>
+                            <span class="blog-date">08 Dec 2024</span>
+                        </div>
+                        <h3>DOM Manipulation: Kiểm Soát HTML bằng JavaScript</h3>
+                        <p>Hướng dẫn chi tiết về cách sử dụng JavaScript để manipulate DOM, tạo/xóa elements, change attributes, và xử lý events. Trở thành master của DOM manipulation.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Java</span>
+                            <span class="blog-date">05 Dec 2024</span>
+                        </div>
+                        <h3>Collections Framework trong Java: ArrayList, HashMap, và Các Cấu Trúc Dữ Liệu Khác</h3>
+                        <p>Khám phá Java Collections Framework - những công cụ mạnh mẽ để lưu trữ và quản lý dữ liệu. Hiểu rõ khi nào nên sử dụng ArrayList, HashMap, TreeSet và nhiều cái khác.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">JavaScript</span>
+                            <span class="blog-date">02 Dec 2024</span>
+                        </div>
+                        <h3>ES6 Features: Arrow Functions, Destructuring, Spread Operator</h3>
+                        <p>Tìm hiểu các tính năng hiện đại của JavaScript ES6 như arrow functions, destructuring, spread operator, template literals và template strings. Viết code JavaScript thời hiện đại.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 7 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Java</span>
+                            <span class="blog-date">29 Nov 2024</span>
+                        </div>
+                        <h3>Java Generics: Viết Code Type-Safe và Tái Sử Dụng Được</h3>
+                        <p>Học cách sử dụng Java Generics để viết code an toàn kiểu dữ liệu, giảm casting errors, và tạo các lớp/phương thức có thể tái sử dụng với nhiều kiểu dữ liệu khác nhau.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 8 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">JavaScript</span>
+                            <span class="blog-date">26 Nov 2024</span>
+                        </div>
+                        <h3>Promise trong JavaScript: Hiểu Rõ Về Xử Lý Bất Đồng Bộ</h3>
+                        <p>Tìm hiểu chi tiết về Promise - cách quản lý các tác vụ bất đồng bộ trong JavaScript. Học về resolve, reject, .then(), .catch(), .finally() và chaining promises.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VA</div>
+                                <span>Nguyễn Văn A</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 9 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Java</span>
+                            <span class="blog-date">23 Nov 2024</span>
+                        </div>
+                        <h3>Multithreading trong Java: Xử Lý Song Song Một Cách An Toàn</h3>
+                        <p>Khám phá thế giới multithreading trong Java. Học cách tạo threads, synchronization, thread safety, và các best practices để viết ứng dụng concurrent hiệu quả.</p>
+                        <div class="blog-footer">
+                            <a href="#" class="read-more">Đọc thêm →</a>
+                            <div class="blog-author">
+                                <div class="author-avatar">VT</div>
+                                <span>Võ Tấn Tài</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức và kinh nghiệm về Java, JavaScript và phát triển web hiện đại.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><a href="index.html#about">Về Tôi</a></li>
+                        <li><a href="index.html#projects">Dự Án</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
