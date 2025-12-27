@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluetooth Attendance System - Võ Tấn Tài</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Training Management App - Võ Tấn Tài</title>
+    <link rel="stylesheet" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,15 +12,15 @@
     <!-- HEADER / NAVIGATION -->
     <header class="header" id="header">
         <nav class="navbar">
-            <a href="index.html" class="logo">blogvt</a>
+            <a href="../index.html" class="logo">blogvt</a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Trang chủ</a></li>
-                <li><a href="about.html" class="nav-link">Về tôi</a></li>
-                <li><a href="skills.html" class="nav-link">Kỹ năng</a></li>
-                <li><a href="projects.html" class="nav-link">Dự án</a></li>
-                <li><a href="certifications.html" class="nav-link">Chứng chỉ</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="contact.html" class="nav-link">Liên hệ</a></li>
+                <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="../about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="../skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="../projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="../certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="../blog.html" class="nav-link">Blog</a></li>
+                <li><a href="../contact.html" class="nav-link">Liên hệ</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -34,28 +34,29 @@
     <section class="project-detail-section" style="margin-top: 80px;">
         <div class="container">
             <!-- Back Button -->
-            <a href="projects.html" class="btn btn-outline" style="margin-bottom: 30px;">
+            <a href="../projects.html" class="btn btn-outline" style="margin-bottom: 30px;">
                 <i class="fas fa-arrow-left"></i> Quay lại
             </a>
 
             <!-- Project Header -->
             <div class="project-detail-header">
-                <h1>Bluetooth Attendance System</h1>
+                <h1>Training Management App</h1>
                 <p class="project-detail-role">Mobile App Developer (Flutter)</p>
-                <p class="project-detail-date">Aug 2024 - Jan 2025</p>
+                <p class="project-detail-date">Sep - Nov 2025</p>
             </div>
 
             <!-- Project Image -->
             <div class="project-detail-image">
-                <img src="images/duan/Bluetooth Attendance System.png" alt="Bluetooth Attendance System">
+                <img src="../images/duan/Training Management App.png" alt="Training Management App">
             </div>
 
             <!-- Project Overview -->
             <div class="project-detail-content">
                 <h2>Tổng Quan Dự Án</h2>
                 <p>
-                    Xây dựng hệ thống điểm danh tự động sử dụng Bluetooth để nhận diện thiết bị sinh viên. 
-                    Giảm thời gian điểm danh từ 15 phút xuống dưới 2 phút cho lớp 50 sinh viên với độ chính xác >92%.
+                    Xây dựng app quản lý khoá học, đăng ký, lịch học và thông báo cho sinh viên và giảng viên. 
+                    Ứng dụng hỗ trợ >500 người dùng thử, với tính năng offline sync hoạt động ổn định trên 95% 
+                    trường hợp mất kết nối tạm thời.
                 </p>
             </div>
 
@@ -63,9 +64,9 @@
             <div class="project-detail-section-block">
                 <h2><i class="fas fa-tasks"></i> Nhiệm Vụ Chính</h2>
                 <ul class="detail-list">
-                    <li>Thiết kế flow phát hiện và ghép nối Bluetooth, đảm bảo bảo mật dữ liệu thiết bị.</li>
-                    <li>Triển khai sync thời gian thực với Firebase; thêm cơ chế hoạt động offline và reconcile khi có kết nối.</li>
-                    <li>Thử nghiệm tại phòng thực hành, thu thập log và tối ưu độ chính xác nhận diện.</li>
+                    <li>Thiết kế UI/UX responsive bằng Flutter, tối ưu trải nghiệm trên Android.</li>
+                    <li>Triển khai mô-đun đăng ký khoá, lịch biểu và thông báo real-time.</li>
+                    <li>Tích hợp RESTful API với backend SQL Server; đảm bảo retry và offline cache khi mất kết nối.</li>
                 </ul>
             </div>
 
@@ -74,10 +75,11 @@
                 <h2><i class="fas fa-code"></i> Công Nghệ</h2>
                 <div class="tech-badges">
                     <span class="tech-badge">Flutter</span>
-                    <span class="tech-badge">Bluetooth Low Energy</span>
-                    <span class="tech-badge">Firebase</span>
                     <span class="tech-badge">Dart</span>
-                    <span class="tech-badge">Local Cache</span>
+                    <span class="tech-badge">REST API</span>
+                    <span class="tech-badge">SQL Server</span>
+                    <span class="tech-badge">Provider</span>
+                    <span class="tech-badge">Dio</span>
                 </div>
             </div>
 
@@ -86,16 +88,16 @@
                 <h2><i class="fas fa-chart-line"></i> Kết Quả & Chỉ Số</h2>
                 <div class="results-grid">
                     <div class="result-item">
-                        <h4>>92% Chính Xác</h4>
-                        <p>Độ nhận diện trong điều kiện thử nghiệm</p>
+                        <h4>500+ Người Dùng</h4>
+                        <p>Ứng dụng hỗ trợ thử nghiệm</p>
                     </div>
                     <div class="result-item">
-                        <h4>15 → 2 phút</h4>
-                        <p>Giảm thời gian điểm danh</p>
+                        <h4>24h → 30 phút</h4>
+                        <p>Giảm thời gian xử lý đăng ký</p>
                     </div>
                     <div class="result-item">
-                        <h4>100% Dữ Liệu</h4>
-                        <p>Offline mode không mất dữ liệu</p>
+                        <h4>95% độ tin cậy</h4>
+                        <p>Offline sync hoạt động ổn định</p>
                     </div>
                 </div>
             </div>
@@ -104,17 +106,17 @@
             <div class="project-detail-section-block">
                 <h2><i class="fas fa-star"></i> Tính Năng Nổi Bật</h2>
                 <ul class="detail-list">
-                    <li><strong>Phát Hiện Bluetooth:</strong> Tự động scan và kết nối với thiết bị sinh viên</li>
-                    <li><strong>Sync Real-time:</strong> Cập nhật lịch sử điểm danh tức thì qua Firebase</li>
-                    <li><strong>Offline Mode:</strong> Hoạt động offline và reconcile khi có mạng</li>
-                    <li><strong>Bảo Mật:</strong> Mã hóa dữ liệu thiết bị, xác thực an toàn</li>
-                    <li><strong>Báo Cáo Chi Tiết:</strong> Xuất lịch sử, thống kê tham dự</li>
+                    <li><strong>Giao diện Responsive:</strong> Tối ưu hoàn toàn cho các thiết bị Android khác nhau</li>
+                    <li><strong>Thông báo Real-time:</strong> Cập nhật tức thì cho sinh viên và giảng viên</li>
+                    <li><strong>Offline Sync:</strong> Hoạt động offline và tự động sync khi có kết nối</li>
+                    <li><strong>Quản lý Khóa Học:</strong> Duyệt, đăng ký và theo dõi tiến độ khóa học</li>
+                    <li><strong>Lịch Biểu Thông Minh:</strong> Hiển thị lịch học và nhắc nhở tự động</li>
                 </ul>
             </div>
 
             <!-- Back to Projects Button -->
             <div style="text-align: center; margin-top: 50px;">
-                <a href="projects.html" class="btn btn-primary">Xem Dự Án Khác</a>
+                <a href="../projects.html" class="btn btn-primary">Xem Dự Án Khác</a>
             </div>
         </div>
     </section>
@@ -126,23 +128,23 @@
                 <div class="footer-section">
                     <h4>Về Tôi</h4>
                     <ul>
-                        <li><a href="index.html">Trang Chủ</a></li>
-                        <li><a href="about.html">Về Tôi</a></li>
-                        <li><a href="skills.html">Kỹ Năng</a></li>
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="../about.html">Về Tôi</a></li>
+                        <li><a href="../skills.html">Kỹ Năng</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Dự Án & Blog</h4>
                     <ul>
-                        <li><a href="projects.html">Dự Án</a></li>
-                        <li><a href="certifications.html">Chứng Chỉ</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="../projects.html">Dự Án</a></li>
+                        <li><a href="../certifications.html">Chứng Chỉ</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Liên Hệ</h4>
                     <ul>
-                        <li><a href="contact.html">Liên Hệ</a></li>
+                        <li><a href="../contact.html">Liên Hệ</a></li>
                         <li><a href="https://github.com/votai2804" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
@@ -158,6 +160,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>
