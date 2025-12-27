@@ -1327,3 +1327,12 @@ body {
         font-size: 0.85rem;
     }
 }
+
+.main-content {
+    margin-top: 60px; /* Height of the header */
+}
+
+.certifications-page-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+}
