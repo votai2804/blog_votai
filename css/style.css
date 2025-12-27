@@ -253,19 +253,47 @@ body {
     /* Animation xuất hiện từ bên phải */
     animation: fadeInRight 1.2s ease-out forwards;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .hero-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    height: auto;
+    object-fit: cover;
     border-radius: 10px;
-    filter: grayscale(20%); /* Làm ảnh hơi xám cho nghệ thuật */
+    filter: grayscale(20%);
     transition: filter 0.3s;
 }
 
 .hero-img:hover {
-    filter: grayscale(0%); /* Hiển thị màu gốc khi di chuột */
+    filter: grayscale(0%);
+}
+
+.hero-skills-info {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.skill-info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.skill-info-item i {
+    color: #2563eb;
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
 }
 
 /* --- ANIMATIONS (KEYFRAMES) --- */
