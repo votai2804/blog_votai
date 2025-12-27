@@ -133,14 +133,6 @@ body {
     padding: 0 8%;
     position: relative;
 }
-
-/* Navbar đơn giản */
-.navbar {
-    position: absolute;
-    top: 30px;
-    left: 8%;
-}
-
 /* Nội dung chính */
 .hero-content {
     max-width: 600px;
