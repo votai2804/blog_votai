@@ -561,7 +561,7 @@ body {
 /* --- FEATURED BLOG POSTS SECTION --- */
 .blog-featured-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    background: #ffffff;
     display: block;
     visibility: visible;
     opacity: 1;
