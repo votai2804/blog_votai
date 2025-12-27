@@ -248,14 +248,18 @@ body {
 }
 
 .image-wrapper {
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: auto;
     /* Animation xuất hiện từ bên phải */
     animation: fadeInRight 1.2s ease-out forwards;
     opacity: 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hero-img {
