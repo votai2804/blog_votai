@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Injection - Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: #fff; padding: 80px 0; text-align: center; margin-top: 60px; }
+        .blog-post-header h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        .blog-post-meta { display: flex; justify-content: center; gap: 20px; font-size: 0.95rem; margin-bottom: 20px; }
+        .blog-post-content { max-width: 800px; margin: 60px auto; line-height: 1.8; color: #333; }
+        .blog-post-content h2 { font-size: 1.8rem; margin: 40px 0 20px 0; color: #000; }
+        .blog-post-content h3 { font-size: 1.3rem; margin: 30px 0 15px 0; color: #1e40af; }
+        .blog-post-content p { margin-bottom: 15px; text-align: justify; }
+        .blog-post-content ul { margin-bottom: 20px; margin-left: 20px; }
+        .blog-post-content li { margin-bottom: 10px; }
+        .code-block { background: #f5f5f5; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; overflow-x: auto; border-radius: 5px; }
+        .code-block code { font-family: 'Courier New', monospace; font-size: 0.9rem; color: #333; }
+        .author-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 40px 0; display: flex; gap: 15px; }
+        .author-avatar { width: 70px; height: 70px; border-radius: 50%; background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
+        .author-info h4 { margin: 0 0 5px 0; }
+        .author-info p { margin: 0; color: #666; font-size: 0.9rem; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: #1e40af; }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="../about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="../skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="../projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="../certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>Dependency Injection & IoC Container Trong ASP.NET Core</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 10 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> .NET</span>
+                <span><i class="fas fa-clock"></i> 16 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>Dependency Injection Là Gì?</h2>
+            <p>Dependency Injection (DI) là một design pattern giúp code loose coupling. Thay vì một class tạo dependencies của nó, DI container cung cấp chúng.</p>
+
+            <h2>Tại Sao Cần DI?</h2>
+            <ul>
+                <li><strong>Loose Coupling:</strong> Classes không phụ thuộc trực tiếp vào implementations</li>
+                <li><strong>Testability:</strong> Dễ dàng mock dependencies cho unit tests</li>
+                <li><strong>Flexibility:</strong> Dễ dàng thay đổi implementations</li>
+                <li><strong>Maintainability:</strong> Code dễ hiểu và dễ bảo trì</li>
+            </ul>
+
+            <h2>Ví Dụ Không Sử Dụng DI</h2>
+            <div class="code-block">
+<code>public class OrderService
+{
+    private readonly EmailService _emailService;
+
+    public OrderService()
+    {
+        // Tightly coupled
+        _emailService = new EmailService();
+    }
+
+    public void CreateOrder(Order order)
+    {
+        // Create order...
+        _emailService.SendEmail(order.CustomerEmail, "Order confirmed");
+    }
+}</code>
+            </div>
+
+            <h2>Sử Dụng Constructor Injection</h2>
+            <div class="code-block">
+<code">public interface IEmailService
+{
+    void SendEmail(string email, string message);
+}
+
+public class EmailService : IEmailService
+{
+    public void SendEmail(string email, string message)
+    {
+        // Send email logic
+    }
+}
+
+public class OrderService
+{
+    private readonly IEmailService _emailService;
+
+    // Dependency được inject qua constructor
+    public OrderService(IEmailService emailService)
+    {
+        _emailService = emailService;
+    }
+
+    public void CreateOrder(Order order)
+    {
+        // Create order...
+        _emailService.SendEmail(order.CustomerEmail, "Order confirmed");
+    }
+}</code>
+            </div>
+
+            <h2>Cấu Hình DI Container</h2>
+            <p>ASP.NET Core có built-in DI container. Cấu hình trong Program.cs:</p>
+            <div class="code-block">
+<code>builder.Services.AddScoped&lt;IEmailService, EmailService&gt;();
+builder.Services.AddScoped&lt;IOrderService, OrderService&gt;();
+builder.Services.AddTransient&lt;ILogger, ConsoleLogger&gt;();
+builder.Services.AddSingleton&lt;IConfigService, ConfigService&gt;();</code>
+            </div>
+
+            <h2>Lifetime Management</h2>
+            <h3>Transient</h3>
+            <p>Được tạo mới mỗi lần được request:</p>
+            <div class="code-block">
+<code>builder.Services.AddTransient&lt;IService, Service&gt;();</code>
+            </div>
+
+            <h3>Scoped</h3>
+            <p>Được tạo một lần per request:</p>
+            <div class="code-block">
+<code>builder.Services.AddScoped&lt;IService, Service&gt;();</code>
+            </div>
+
+            <h3>Singleton</h3>
+            <p>Được tạo một lần và reused cho toàn bộ application:</p>
+            <div class="code-block">
+<code>builder.Services.AddSingleton&lt;IService, Service&gt;();</code>
+            </div>
+
+            <h2>Property & Method Injection</h2>
+            <div class="code-block">
+<code">// Property Injection
+public class MyClass
+{
+    public IService Service { get; set; }
+}
+
+// Method Injection
+public class MyController
+{
+    public IActionResult MyAction([FromServices] IService service)
+    {
+        // Sử dụng service
+        return Ok();
+    }
+}</code>
+            </div>
+
+            <h2>Repository Pattern + DI</h2>
+            <div class="code-block">
+<code">builder.Services.AddScoped&lt;IProductRepository, ProductRepository&gt;();
+builder.Services.AddScoped&lt;IProductService, ProductService&gt;();
+
+public class ProductService
+{
+    private readonly IProductRepository _repository;
+
+    public ProductService(IProductRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task&lt;Product&gt; GetProductAsync(int id)
+    {
+        return await _repository.GetByIdAsync(id);
+    }
+}</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Luôn sử dụng interfaces, không concrete types</li>
+                <li>Chọn lifetime phù hợp cho mỗi service</li>
+                <li>Tránh circular dependencies</li>
+                <li>Sử dụng constructor injection (ưu tiên)</li>
+                <li>Đừng share mutable state với singletons</li>
+                <li>Test services bằng cách mock dependencies</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>Dependency Injection là một pattern cực kỳ quan trọng trong modern software development. Nó giúp viết code cleaner, testable hơn và dễ maintain.</p>
+
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in ASP.NET Core Architecture</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức về Software Engineering.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="../about.html">Về Tôi</a></li>
+                        <li><a href="../projects.html">Dự Án</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js & Express - Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header { background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: #fff; padding: 80px 0; text-align: center; margin-top: 60px; }
+        .blog-post-header h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        .blog-post-meta { display: flex; justify-content: center; gap: 20px; font-size: 0.95rem; margin-bottom: 20px; }
+        .blog-post-content { max-width: 800px; margin: 60px auto; line-height: 1.8; color: #333; }
+        .blog-post-content h2 { font-size: 1.8rem; margin: 40px 0 20px 0; color: #000; }
+        .blog-post-content h3 { font-size: 1.3rem; margin: 30px 0 15px 0; color: #1e40af; }
+        .blog-post-content p { margin-bottom: 15px; text-align: justify; }
+        .blog-post-content ul { margin-bottom: 20px; margin-left: 20px; }
+        .blog-post-content li { margin-bottom: 10px; }
+        .code-block { background: #f5f5f5; border-left: 4px solid #2563eb; padding: 15px; margin: 20px 0; overflow-x: auto; border-radius: 5px; }
+        .code-block code { font-family: 'Courier New', monospace; font-size: 0.9rem; color: #333; }
+        .author-box { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 40px 0; display: flex; gap: 15px; }
+        .author-avatar { width: 70px; height: 70px; border-radius: 50%; background: #2563eb; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
+        .author-info h4 { margin: 0 0 5px 0; }
+        .author-info p { margin: 0; color: #666; font-size: 0.9rem; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2563eb; text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: #1e40af; }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="../about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="../skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="../projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="../certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>Node.js & Express: Backend JavaScript Full Power</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 08 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> Node.js</span>
+                <span><i class="fas fa-clock"></i> 18 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>Node.js Là Gì?</h2>
+            <p>Node.js là JavaScript runtime environment cho phép chạy JavaScript ở server side. Nó được xây dựng trên V8 engine của Google và cho phép xây dựng scalable backend applications.</p>
+
+            <h2>Express Framework</h2>
+            <p>Express là web application framework phổ biến nhất cho Node.js. Nó cung cấp tools để xây dựng REST APIs và web servers dễ dàng.</p>
+
+            <h2>Cài Đặt & Setup</h2>
+            <div class="code-block">
+<code">npm init -y
+npm install express
+npm install --save-dev nodemon</code>
+            </div>
+
+            <h2>Server Đầu Tiên</h2>
+            <div class="code-block">
+<code">const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Hello World' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});</code>
+            </div>
+
+            <h2>Routing</h2>
+            <div class="code-block">
+<code">// GET request
+app.get('/api/users', (req, res) => {
+  res.json([{ id: 1, name: 'John' }]);
+});
+
+// POST request
+app.post('/api/users', (req, res) => {
+  const { name, email } = req.body;
+  res.status(201).json({ id: 1, name, email });
+});
+
+// PUT request
+app.put('/api/users/:id', (req, res) => {
+  res.json({ id: req.params.id, ...req.body });
+});
+
+// DELETE request
+app.delete('/api/users/:id', (req, res) => {
+  res.json({ message: 'User deleted' });
+});</code>
+            </div>
+
+            <h2>Middleware</h2>
+            <p>Middleware là functions xử lý requests trước khi đến routes:</p>
+            <div class="code-block">
+<code">// Logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
+// Authentication middleware
+const authenticate = (req, res, next) => {
+  const token = req.headers.authorization;
+  if(token) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+};
+
+app.get('/api/protected', authenticate, (req, res) => {
+  res.json({ data: 'Protected data' });
+});</code>
+            </div>
+
+            <h2>Error Handling</h2>
+            <div class="code-block">
+<code">// Route not found
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
+// Error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal server error' });
+});</code>
+            </div>
+
+            <h2>Database Integration</h2>
+            <p>Sử dụng MongoDB hoặc SQL databases:</p>
+            <div class="code-block">
+<code">const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/myapp');
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
+const User = mongoose.model('User', userSchema);
+
+// Create
+const newUser = await User.create({ name: 'John', email: 'john@example.com' });
+
+// Read
+const users = await User.find();
+const user = await User.findById(id);
+
+// Update
+await User.findByIdAndUpdate(id, { name: 'Jane' });
+
+// Delete
+await User.findByIdAndDelete(id);</code>
+            </div>
+
+            <h2>Authentication</h2>
+            <p>Sử dụng JWT cho authentication:</p>
+            <div class="code-block">
+<code">const jwt = require('jsonwebtoken');
+
+// Generate token
+const token = jwt.sign(
+  { userId: user._id },
+  'your-secret-key',
+  { expiresIn: '1h' }
+);
+
+// Verify token
+const decoded = jwt.verify(token, 'your-secret-key');</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Sử dụng environment variables cho sensitive data</li>
+                <li>Implement proper error handling và logging</li>
+                <li>Validate input data từ client</li>
+                <li>Sử dụng middleware cho cross-cutting concerns</li>
+                <li>Organize code theo modules</li>
+                <li>Implement authentication & authorization</li>
+                <li>Test APIs với postman hoặc unit tests</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>Node.js với Express là powerful combination cho building modern backend applications. Với JavaScript trên cả client và server, bạn có thể share code và concepts, tăng productivity.</p>
+
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in JavaScript & Backend Development</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức về Software Engineering.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="../about.html">Về Tôi</a></li>
+                        <li><a href="../projects.html">Dự Án</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

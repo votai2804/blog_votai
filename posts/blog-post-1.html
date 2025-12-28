@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP.NET Core Web API - Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-post-content {
+            max-width: 800px;
+            margin: 60px auto;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            color: #000;
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            color: #1e40af;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #856404;
+        }
+
+        .author-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            margin: 0 0 5px 0;
+        }
+
+        .author-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #1e40af;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER /NAVIGATION -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="../about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="../skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="../projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="../certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BLOG POST HEADER -->
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>ASP.NET Core Web API: Xây Dựng RESTful Service Hoàn Chỉnh</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 20 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> .NET</span>
+                <span><i class="fas fa-clock"></i> 15 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG POST CONTENT -->
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>Giới Thiệu</h2>
+            <p>
+                ASP.NET Core đã trở thành một trong những framework phổ biến nhất để xây dựng Web API hiện đại. Trong bài viết này, chúng ta sẽ tìm hiểu cách xây dựng một RESTful Web API hoàn chỉnh từ A đến Z, bao gồm các khái niệm cơ bản, cấu hình, authentication, authorization, và error handling.
+            </p>
+
+            <h2>Cấu Trúc Cơ Bản Của ASP.NET Core Web API</h2>
+            <p>
+                Một Web API trong ASP.NET Core gồm các thành phần chính sau:
+            </p>
+            <ul>
+                <li><strong>Controllers:</strong> Xử lý HTTP requests và trả về responses</li>
+                <li><strong>Models:</strong> Định nghĩa cấu trúc dữ liệu</li>
+                <li><strong>Services:</strong> Chứa logic xử lý business</li>
+                <li><strong>Database Context:</strong> Giao tiếp với database thông qua Entity Framework Core</li>
+                <li><strong>Middleware:</strong> Xử lý các yêu cầu trước khi đến controllers</li>
+            </ul>
+
+            <h2>Tạo Một Project Web API Cơ Bản</h2>
+            <p>
+                Để tạo một project Web API mới với .NET CLI:
+            </p>
+            <div class="code-block">
+<code>dotnet new webapi -n MyWebApi
+cd MyWebApi
+dotnet build</code>
+            </div>
+
+            <h2>Định Nghĩa Models</h2>
+            <p>
+                Models là những class đại diện cho các đối tượng trong ứng dụng. Ví dụ, nếu chúng ta xây dựng API quản lý sản phẩm:
+            </p>
+            <div class="code-block">
+<code>public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Description { get; set; }
+    public int CategoryId { get; set; }
+    public DateTime CreatedAt { get; set; }
+}</code>
+            </div>
+
+            <h2>Cấu Hình Database Context</h2>
+            <p>
+                Entity Framework Core giúp chúng ta tương tác với database một cách dễ dàng:
+            </p>
+            <div class="code-block">
+<code>public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; options) 
+        : base(options) { } 
+
+    public DbSet&lt;Product&gt; Products { get; set; }
+    public DbSet&lt;Category&gt; Categories { get; set; }
+}</code>
+            </div>
+
+            <h2>Tạo Controllers</h2>
+            <p>
+                Controllers là nơi xử lý các HTTP requests. Dưới đây là ví dụ về một ProductController đơn giản:
+            </p>
+            <div class="code-block">
+<code>[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    private readonly IProductService _productService;
+
+    public ProductsController(IProductService productService)
+    {
+        _productService = productService;
+    }
+
+    [HttpGet]
+    public async Task&lt;IActionResult&gt; GetAllProducts()
+    {
+        var products = await _productService.GetAllProductsAsync();
+        return Ok(products);
+    }
+
+    [HttpGet("{id}")]
+    public async Task&lt;IActionResult&gt; GetProductById(int id)
+    {
+        var product = await _productService.GetProductByIdAsync(id);
+        if (product == null)
+            return NotFound();
+        return Ok(product);
+    }
+
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; CreateProduct([FromBody] CreateProductDto dto)
+    {
+        var product = await _productService.CreateProductAsync(dto);
+        return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+    }
+}</code>
+            </div>
+
+            <h2>Dependency Injection</h2>
+            <p>
+                ASP.NET Core có Dependency Injection tích hợp sẵn. Chúng ta cấu hình services trong <span class="highlight">Program.cs</span>:
+            </p>
+            <div class="code-block">
+<code>builder.Services.AddDbContext&lt;ApplicationDbContext&gt;(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped&lt;IProductService, ProductService&gt;();
+builder.Services.AddScoped&lt;IProductRepository, ProductRepository&gt;();</code>
+            </div>
+
+            <h2>Authentication & Authorization</h2>
+            <p>
+                Để bảo vệ API, chúng ta sử dụng JWT (JSON Web Token) hoặc OAuth. Dưới đây là cách setup JWT:
+            </p>
+            <div class="code-block">
+<code>builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+app.UseAuthentication();
+app.UseAuthorization();</code>
+            </div>
+
+            <h2>Error Handling & Validation</h2>
+            <p>
+                Xử lý lỗi một cách chuyên nghiệp là rất quan trọng:
+            </p>
+            <div class="code-block">
+<code>[HttpPost]
+public async Task&lt;IActionResult&gt; CreateProduct([FromBody] CreateProductDto dto)
+{
+    try
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var product = await _productService.CreateProductAsync(dto);
+        return CreatedAtAction(nameof(GetProductById), new { id = product.Id }, product);
+    }
+    catch (ArgumentException ex)
+    {
+        return BadRequest(new { message = ex.Message });
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new { message = "Internal server error" });
+    }
+}</code>
+            </div>
+
+            <h2>API Documentation với Swagger</h2>
+            <p>
+                Swagger giúp tạo tài liệu API tự động:
+            </p>
+            <div class="code-block">
+<code>builder.Services.AddSwaggerGen();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+});</code>
+            </div>
+
+            <h2>Testing API</h2>
+            <p>
+                Sử dụng Postman hoặc curl để test API:
+            </p>
+            <div class="code-block">
+<code>// GET request
+curl https://localhost:5001/api/products
+
+// POST request
+curl -X POST https://localhost:5001/api/products \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Laptop", "price": 1000}'</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Sử dụng các HTTP status code chính xác (200, 201, 400, 404, 500, ...)</li>
+                <li>Cấu trúc response với data, error, message phù hợp</li>
+                <li>Implement pagination cho các endpoint GET trả về danh sách</li>
+                <li>Validate input dữ liệu thích hợp</li>
+                <li>Sử dụng logging để theo dõi lỗi</li>
+                <li>Version API của bạn (v1, v2, ...)</li>
+                <li>Implement rate limiting để tránh abuse</li>
+                <li>Sử dụng HTTPS cho production</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>
+                ASP.NET Core Web API cung cấp một nền tảng mạnh mẽ để xây dựng các ứng dụng backend hiện đại. Bằng cách theo dõi các best practices và patterns được hướng dẫn ở trên, bạn sẽ có thể tạo ra các API chất lượng cao, an toàn và dễ bảo trì.
+            </p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in .NET Core Web Development and Backend Architecture</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức và kinh nghiệm về Java, JavaScript và phát triển web hiện đại.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="../about.html">Về Tôi</a></li>
+                        <li><a href="../projects.html">Dự Án</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Framework Core - Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-post-header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .blog-post-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-post-content {
+            max-width: 800px;
+            margin: 60px auto;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-post-content h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            color: #000;
+        }
+
+        .blog-post-content h3 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            color: #1e40af;
+        }
+
+        .blog-post-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        .blog-post-content li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #856404;
+        }
+
+        .author-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            margin: 0 0 5px 0;
+        }
+
+        .author-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #1e40af;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVIGATION -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <a href="../index.html" class="logo">blogvt</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html" class="nav-link">Trang chủ</a></li>
+                <li><a href="../about.html" class="nav-link">Về tôi</a></li>
+                <li><a href="../skills.html" class="nav-link">Kỹ năng</a></li>
+                <li><a href="../projects.html" class="nav-link">Dự án</a></li>
+                <li><a href="../certifications.html" class="nav-link">Chứng chỉ</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../contact.html" class="nav-link">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BLOG POST HEADER -->
+    <section class="blog-post-header">
+        <div class="container">
+            <h1>Entity Framework Core: ORM Mạnh Mẽ Cho .NET</h1>
+            <div class="blog-post-meta">
+                <span><i class="fas fa-calendar"></i> 18 Dec 2024</span>
+                <span><i class="fas fa-tag"></i> Database</span>
+                <span><i class="fas fa-clock"></i> 18 phút đọc</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG POST CONTENT -->
+    <div class="container">
+        <article class="blog-post-content">
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+
+            <h2>Entity Framework Core là gì?</h2>
+            <p>
+                Entity Framework Core (EF Core) là một ORM (Object-Relational Mapping) hiện đại cho .NET. Nó cho phép bạn làm việc với database sử dụng các đối tượng .NET thay vì viết SQL trực tiếp. EF Core hỗ trợ nhiều database providers như SQL Server, PostgreSQL, MySQL, SQLite và nhiều cơ sở dữ liệu khác.
+            </p>
+
+            <h2>Tại Sao Sử Dụng Entity Framework Core?</h2>
+            <ul>
+                <li><strong>Giảm code boilerplate:</strong> Không cần viết SQL thủ công cho mỗi query</li>
+                <li><strong>Type-safe queries:</strong> LINQ queries được kiểm tra tại compile time</li>
+                <li><strong>Cross-database support:</strong> Dễ dàng chuyển đổi giữa các database khác nhau</li>
+                <li><strong>Automatic migrations:</strong> Quản lý schema changes dễ dàng</li>
+                <li><strong>Relationship management:</strong> Xử lý foreign keys và relationships tự động</li>
+                <li><strong>Change tracking:</strong> Tự động theo dõi thay đổi trên các entity</li>
+            </ul>
+
+            <h2>Cài Đặt Entity Framework Core</h2>
+            <p>
+                Để cài đặt EF Core, bạn cần cài đặt NuGet packages:
+            </p>
+            <div class="code-block">
+<code>dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools</code>
+            </div>
+
+            <h2>Code-First Approach</h2>
+            <p>
+                Code-First là phương pháp tạo database từ các class C# của bạn:
+            </p>
+            <div class="code-block">
+<code>public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    
+    // Navigation property
+    public ICollection&lt;Enrollment&gt; Enrollments { get; set; }
+}
+
+public class Course
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public int Credits { get; set; }
+    
+    // Navigation property
+    public ICollection&lt;Enrollment&gt; Enrollments { get; set; }
+}
+
+public class Enrollment
+{
+    public int Id { get; set; }
+    public int StudentId { get; set; }
+    public int CourseId { get; set; }
+    public DateTime EnrollmentDate { get; set; }
+    
+    // Navigation properties
+    public Student Student { get; set; }
+    public Course Course { get; set; }
+}</code>
+            </div>
+
+            <h2>DbContext Configuration</h2>
+            <p>
+                DbContext là class chính để tương tác với database:
+            </p>
+            <div class="code-block">
+<code>public class UniversityDbContext : DbContext
+{
+    public UniversityDbContext(DbContextOptions&lt;UniversityDbContext&gt; options)
+        : base(options) { }
+
+    public DbSet&lt;Student&gt; Students { get; set; }
+    public DbSet&lt;Course&gt; Courses { get; set; }
+    public DbSet&lt;Enrollment&gt; Enrollments { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Configure relationships
+        modelBuilder.Entity&lt;Enrollment&gt;()
+            .HasOne(e => e.Student)
+            .WithMany(s => s.Enrollments)
+            .HasForeignKey(e => e.StudentId);
+
+        modelBuilder.Entity&lt;Enrollment&gt;()
+            .HasOne(e => e.Course)
+            .WithMany(c => c.Enrollments)
+            .HasForeignKey(e => e.CourseId);
+    }
+}</code>
+            </div>
+
+            <h2>Migrations</h2>
+            <p>
+                Migrations giúp quản lý schema changes:
+            </p>
+            <div class="code-block">
+<code>// Tạo migration đầu tiên
+dotnet ef migrations add InitialCreate
+
+// Update database
+dotnet ef database update
+
+// Xem danh sách migrations
+dotnet ef migrations list
+
+// Revert migration
+dotnet ef migrations remove</code>
+            </div>
+
+            <h2>LINQ Queries</h2>
+            <p>
+                Sử dụng LINQ để query dữ liệu:
+            </p>
+            <div class="code-block">
+<code>using (var context = new UniversityDbContext())
+{
+    // Get all students
+    var allStudents = context.Students.ToList();
+
+    // Get student by id
+    var student = context.Students.Find(1);
+
+    // Filter with Where
+    var engineeringStudents = context.Students
+        .Where(s => s.Major == "Engineering")
+        .ToList();
+
+    // Join tables
+    var enrollments = context.Enrollments
+        .Include(e => e.Student)
+        .Include(e => e.Course)
+        .ToList();
+
+    // Projection
+    var studentNames = context.Students
+        .Select(s => new { s.Id, s.Name })
+        .ToList();
+
+    // Async queries
+    var students = await context.Students.ToListAsync();
+}</code>
+            </div>
+
+            <h2>Relationships</h2>
+            <p>
+                EF Core hỗ trợ ba loại relationships chính:
+            </p>
+
+            <h3>One-to-Many</h3>
+            <p>Một Student có nhiều Enrollments:</p>
+            <div class="code-block">
+<code>public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection&lt;Enrollment&gt; Enrollments { get; set; }
+}</code>
+            </div>
+
+            <h3>Many-to-Many</h3>
+            <p>Nhiều Students có nhiều Courses:</p>
+            <div class="code-block">
+<code>public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection&lt;Course&gt; Courses { get; set; }
+}
+
+public class Course
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public ICollection&lt;Student&gt; Students { get; set; }
+}</code>
+            </div>
+
+            <h2>Lazy Loading, Eager Loading & Explicit Loading</h2>
+            <ul>
+                <li><strong>Eager Loading:</strong> Load related data cùng lúc sử dụng Include()</li>
+                <li><strong>Lazy Loading:</strong> Load related data tự động khi truy cập (cần cấu hình)</li>
+                <li><strong>Explicit Loading:</strong> Manually load related data khi cần</li>
+            </ul>
+
+            <div class="code-block">
+<code>// Eager Loading
+var students = context.Students
+    .Include(s => s.Enrollments)
+    .ThenInclude(e => e.Course)
+    .ToList();
+
+// Explicit Loading
+var student = context.Students.Find(1);
+context.Entry(student)
+    .Collection(s => s.Enrollments)
+    .Load();</code>
+            </div>
+
+            <h2>Change Tracking</h2>
+            <p>
+                EF Core tự động theo dõi thay đổi trên entities:
+            </p>
+            <div class="code-block">
+<code">var student = context.Students.Find(1);
+student.Name = "New Name";
+
+// EF Core automatically detects this change
+context.SaveChanges(); // Only Name field is updated</code>
+            </div>
+
+            <h2>Best Practices</h2>
+            <ul>
+                <li>Sử dụng async methods (ToListAsync, SaveChangesAsync) để tránh blocking</li>
+                <li>Tạo repository pattern để decouple database access từ business logic</li>
+                <li>Sử dụng DTOs (Data Transfer Objects) cho API responses</li>
+                <li>Index frequently queried columns</li>
+                <li>Avoid N+1 queries bằng cách sử dụng Include()</li>
+                <li>Use transactions cho multiple operations</li>
+                <li>Configure shadow properties cho metadata columns</li>
+            </ul>
+
+            <h2>Kết Luận</h2>
+            <p>
+                Entity Framework Core là một công cụ mạnh mẽ giúp simplify database access trong .NET applications. Bằng cách hiểu rõ các khái niệm như relationships, migrations, và LINQ queries, bạn có thể viết database code hiệu quả và dễ bảo trì.
+            </p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">VT</div>
+                <div class="author-info">
+                    <h4>Võ Tấn Tài</h4>
+                    <p>Software Engineer specializing in .NET Core and Database Design</p>
+                    <p><a href="https://github.com/votai2804" target="_blank" style="color: #2563eb; text-decoration: none;">github.com/votai2804</a></p>
+                </div>
+            </div>
+
+            <a href="../blog.html" class="back-link">← Quay lại Blog</a>
+        </article>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Về Blog</h4>
+                    <p>Chia sẻ kiến thức và kinh nghiệm về Java, JavaScript và phát triển web hiện đại.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên Kết Nhanh</h4>
+                    <ul>
+                        <li><a href="../index.html">Trang Chủ</a></li>
+                        <li><a href="../about.html">Về Tôi</a></li>
+                        <li><a href="../projects.html">Dự Án</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Mạng Xã Hội</h4>
+                    <div class="footer-social">
+                        <a href="https://github.com/votai2804" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Võ Tấn Tài. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
